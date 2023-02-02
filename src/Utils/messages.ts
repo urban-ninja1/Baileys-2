@@ -26,7 +26,7 @@ import {
 import { isJidGroup, jidNormalizedUser } from '../WABinary'
 import { sha256 } from './crypto'
 import { generateMessageID, getKeyAuthor, unixTimestampSeconds } from './generics'
-import { downloadContentFromMessage, encryptedStream, generateThumbnail, getAudioDuration, MediaDownloadOptions } from './messages-media'
+import { downloadContentFromMessage, encryptedStream, generateThumbnail, getAudioDuration, getAudioWaveform, MediaDownloadOptions } from './messages-media'
 
 type MediaUploadData = {
 	media: WAMediaUpload
@@ -39,6 +39,7 @@ type MediaUploadData = {
 	mimetype?: string
 	width?: number
 	height?: number
+	waveform?: Uint8Array
 }
 
 const MIMETYPE_MAP: { [T in MediaType]?: string } = {
@@ -186,7 +187,8 @@ export const prepareWAMessageMedia = async(
 
 				if(requiresDurationComputation) {
 					uploadData.seconds = await getAudioDuration(bodyPath!)
-					logger?.debug('computed audio duration')
+					uploadData.waveform = await getAudioWaveform(bodyPath!)
+					logger?.debug({ uploadData }, 'computed audio duration')
 				}
 			} catch(error) {
 				logger?.warn({ trace: error.stack }, 'failed to obtain extra info')
