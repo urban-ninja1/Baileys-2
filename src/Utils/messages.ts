@@ -187,7 +187,9 @@ export const prepareWAMessageMedia = async(
 
 				if(requiresDurationComputation) {
 					uploadData.seconds = await getAudioDuration(bodyPath!)
-					uploadData.waveform = await getAudioWaveform(bodyPath!)
+					if (options.mediaAudioWaveform) {
+						uploadData.waveform = await getAudioWaveform(bodyPath!)
+					}
 					logger?.debug({ uploadData }, 'computed audio duration')
 				}
 			} catch(error) {
