@@ -16,4 +16,6 @@ export interface Contact {
      */
     imgUrl?: string | null | 'changed'
     status?: string
+    // SW-897 Показывать название сессии клиента при запросе метода getsettings
+    deviceName?: string
 }

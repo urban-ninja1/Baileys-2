@@ -47,9 +47,9 @@ export const getUrlInfo = async(
 		if(!text.startsWith('https://') && !text.startsWith('http://')) {
 			previewLink = 'https://' + previewLink
 		}
-
+		// SW-803 Added followRedirects that prevents exception
 		const info = await getLinkPreview(previewLink, {
-			...opts.fetchOpts,
+			...opts.fetchOpts, followRedirects: 'follow',
 			headers: opts.fetchOpts as {}
 		})
 		if(info && 'title' in info && info.title) {
@@ -57,7 +57,8 @@ export const getUrlInfo = async(
 
 			const urlInfo: WAUrlInfo = {
 				'canonical-url': info.url,
-				'matched-text': text,
+				// SW-803 You must pass link starting with http(s) in 'matched-text'. 'text' does not contain it
+				'matched-text': info.url,
 				title: info.title,
 				description: info.description,
 				originalThumbnailUrl: image

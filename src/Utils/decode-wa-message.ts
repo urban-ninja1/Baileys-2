@@ -2,7 +2,7 @@ import { Boom } from '@hapi/boom'
 import { Logger } from 'pino'
 import { proto } from '../../WAProto'
 import { SignalRepository, WAMessageKey } from '../Types'
-import { areJidsSameUser, BinaryNode, isJidBroadcast, isJidGroup, isJidStatusBroadcast, isJidUser } from '../WABinary'
+import { areJidsSameUser, BinaryNode, isJidBroadcast, isJidGroup, isJidStatusBroadcast, isJidUser, jidDecode } from '../WABinary'
 import { unpadRandomMax16 } from './generics'
 
 const NO_MESSAGE_FOUND_ERROR_TEXT = 'Message absent from node'
@@ -175,7 +175,10 @@ export const decryptMessageNode = (
 					}
 				}
 			}
-
+			// SW ?
+			(fullMessage as any).fullJid = jidDecode(stanza.attrs.from);
+			// SW-809 Пришел ошибочный входящий вебхук из группового чата с маркером {{SWE003}}
+			(fullMessage as any).type = stanza.attrs.type
 			// if nothing was found to decrypt
 			if(!decryptables) {
 				fullMessage.messageStubType = proto.WebMessageInfo.StubType.CIPHERTEXT

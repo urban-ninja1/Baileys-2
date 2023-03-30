@@ -54,6 +54,8 @@ export type BaileysEventMap = {
     'blocklist.update': { blocklist: string[], type: 'add' | 'remove' }
     /** Receive an update on a call, including when the call was received, rejected, accepted */
     'call': WACallEvent[]
+    // SW-897 Показывать название сессии клиента при запросе метода getsettings
+    'deviceAgent.update': proto.SyncActionValue.IAgentAction
 }
 
 export type BufferedEventData = {

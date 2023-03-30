@@ -3,7 +3,7 @@ import { AxiosRequestConfig } from 'axios'
 import type { Logger } from 'pino'
 import { proto } from '../../WAProto'
 import { BaileysEventEmitter, Chat, ChatModification, ChatMutation, ChatUpdate, Contact, InitialAppStateSyncOptions, LastMessageList, LTHashState, WAPatchCreate, WAPatchName } from '../Types'
-import { BinaryNode, getBinaryNodeChild, getBinaryNodeChildren, isJidGroup, jidNormalizedUser } from '../WABinary'
+import { BinaryNode, getBinaryNodeChild, getBinaryNodeChildren, isJidGroup, jidDecode, jidNormalizedUser } from '../WABinary'
 import { aesDecrypt, aesEncrypt, hkdf, hmacSign } from './crypto'
 import { toNumber } from './generics'
 import { LT_HASH_ANTI_TAMPERING } from './lt-hash'
@@ -730,6 +730,14 @@ export const processSyncAction = (
 	} else if(action?.deleteChatAction || type === 'deleteChat') {
 		if(!isInitialSync) {
 			ev.emit('chats.delete', [id])
+		}
+	} else if (action?.agentAction && type === 'deviceAgent') {
+		if (action && action.agentAction) {
+			// SW-897 Показывать название сессии клиента при запросе метода getsettings
+			const { device } = jidDecode(me.id)!
+			if (device && device == action.agentAction.deviceID) {
+				ev.emit('creds.update', { me: { ...me, deviceName: action.agentAction.name! } });
+			}
 		}
 	} else {
 		logger?.debug({ syncAction, id }, 'unprocessable update')
