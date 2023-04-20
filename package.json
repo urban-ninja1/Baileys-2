@@ -2,7 +2,7 @@
   "name": "@yard-team/baileys",
   "version": "5.1.0",
   "description": "WhatsApp API",
-  "homepage": "https://github.com/adiwajshing/Baileys",
+  "homepage": "https://github.com/Yard-Team/Baileys",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "keywords": [
@@ -28,9 +28,9 @@
     "lint:fix": "eslint . --fix --ext .js,.ts,.jsx,.tsx"
   },
   "author": "Adhiraj Singh",
-  "license": "MIT",
+  "license": "GPL-3",
   "repository": {
-    "url": "git@github.com:adiwajshing/baileys.git"
+    "url": "git@github.com:Yard-Team/baileys.git"
   },
   "dependencies": {
     "@hapi/boom": "^9.1.3",
