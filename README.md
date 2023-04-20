@@ -1,4 +1,20 @@
 # Baileys - Typescript/Javascript WhatsApp Web API
+
+[![publish](https://github.com/Yard-Team/Baileys/workflows/Publish%20Release/badge.svg)](https://github.com/Yard-Team/Baileys/actions/workflows/publish-release.yml)
+
+| :exclamation: As we all know famous @adiwajshing closed the original Baileys library since he received a cease & desist from WhatsApp. I fully respect his desicion but since library is under GPL-3 we have freedom to share and change the library to suit our needs. This fork contains latest sources of Baileys commited in Master branch and native-mobile-api pull-request sources placed to separate branch. Also i have set up builds and published first release 5.1.0. Now the fork is going to be mantained by community. The fork is used in real project [BASIS API](https://basis-api.com) so i'm being involved and fully interested in it's future. I'm hoping that community will help and join. Surely copyright belongs to @adiwajshing and I hope the author changes his mind and comes back one day. Since repository might be blocked we must be prepared. I'm going to create mirrors and use own git server. News are coming soon .But for now enjoy the 5.1.0. release!|
+|-----------------------------------------|
+
+
+## Another libraries
+
+There are other well-mantained libraries for other languages that you might interested in:
+
+* Java/Kotlin https://github.com/Auties00/Whatsapp4j
+* Go https://github.com/tulir/whatsmeow
+
+
+## Intro
  
  Baileys does not require Selenium or any other browser to be interface with WhatsApp Web, it does so directly using a **WebSocket**. Not running Selenium or Chromimum saves you like **half a gig** of ram :/ 
 
@@ -26,7 +42,7 @@ To run the example script, download or clone the repo and then type the followin
 
 Use the stable version:
 ```
-yarn add @adiwajshing/baileys
+yarn add @yard-team/baileys
 ```
 
 Use the edge version (no guarantee of stability, but latest fixes + features)
@@ -36,7 +52,7 @@ yarn add github:adiwajshing/baileys
 
 Then import your code using:
 ``` ts 
-import makeWASocket from '@adiwajshing/baileys'
+import makeWASocket from '@yard-team/baileys'
 ```
 
 ## Unit Tests
@@ -46,7 +62,7 @@ TODO
 ## Connecting
 
 ``` ts
-import makeWASocket, { DisconnectReason } from '@adiwajshing/baileys'
+import makeWASocket, { DisconnectReason } from '@yard-team/baileys'
 import { Boom } from '@hapi/boom'
 
 async function connectToWhatsApp () {
@@ -176,7 +192,7 @@ You obviously don't want to keep scanning the QR code every time you want to con
 
 So, you can load the credentials to log back in:
 ``` ts
-import makeWASocket, { BufferJSON, useMultiFileAuthState } from '@adiwajshing/baileys'
+import makeWASocket, { BufferJSON, useMultiFileAuthState } from '@yard-team/baileys'
 import * as fs from 'fs'
 
 // utility function to help save the auth state in a single folder
@@ -289,7 +305,7 @@ Baileys does not come with a defacto storage for chats, contacts, or messages. H
 It can be used as follows:
 
 ``` ts
-import makeWASocket, { makeInMemoryStore } from '@adiwajshing/baileys'
+import makeWASocket, { makeInMemoryStore } from '@yard-team/baileys'
 // the store maintains the data of the WA connection in memory
 // can be written out to a file & read from it
 const store = makeInMemoryStore({ })
@@ -328,7 +344,7 @@ The store also provides some simple functions such as `loadMessages` that utiliz
 ### Non-Media Messages
 
 ``` ts
-import { MessageType, MessageOptions, Mimetype } from '@adiwajshing/baileys'
+import { MessageType, MessageOptions, Mimetype } from '@yard-team/baileys'
 
 const id = 'abcd@s.whatsapp.net' // the WhatsApp ID 
 // send a simple text!
@@ -446,7 +462,7 @@ Sending media (video, stickers, images) is easier & more efficient than ever.
 - When specifying a media url, Baileys never loads the entire buffer into memory; it even encrypts the media as a readable stream.
 
 ``` ts
-import { MessageType, MessageOptions, Mimetype } from '@adiwajshing/baileys'
+import { MessageType, MessageOptions, Mimetype } from '@yard-team/baileys'
 // Sending gifs
 await sock.sendMessage(
     id, 
@@ -528,7 +544,7 @@ const sendMsg = await sock.sendMessage(id, templateMessage)
                                     Do not enter this field if you want to automatically generate a thumb
                                 */
         mimetype: Mimetype.pdf, /* (for media messages) specify the type of media (optional for all media types except documents),
-                                    import {Mimetype} from '@adiwajshing/baileys'
+                                    import {Mimetype} from '@yard-team/baileys'
                                 */
         fileName: 'somefile.pdf', // (for media messages) file name for the media
         /* will send audio messages as voice notes, if set to true */
@@ -587,7 +603,7 @@ The presence expires after about 10 seconds.
 If you want to save the media you received
 ``` ts
 import { writeFile } from 'fs/promises'
-import { downloadMediaMessage } from '@adiwajshing/baileys'
+import { downloadMediaMessage } from '@yard-team/baileys'
 
 sock.ev.on('messages.upsert', async ({ messages }) => {
     const m = messages[0]
