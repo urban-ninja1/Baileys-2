@@ -1,9 +1,10 @@
-# Baileys - Typescript/Javascript WhatsApp Web API
 
 [![publish](https://github.com/Yard-Team/Baileys/workflows/Publish%20Release/badge.svg)](https://github.com/Yard-Team/Baileys/actions/workflows/publish-release.yml)
 
-| :exclamation:  This is very important   |
+| :exclamation: As we all know famous @adiwajshing mysteriously disappeared with the original Baileys library and we do not have any explanations yet. I fully respect his desicion but since library is under GPL-3 we have freedom to share and change the library to suit our needs. This fork contains latest sources of Baileys commited in Master branch and native-mobile-api pull-request sources placed to separate branch. Also i have set up builds and published first release 5.1.0. Now the fork is going to be mantained by me as a member of Yard Team .The fork is used in [real project](https://basis-api.com) so  i'm being involved and fully interested in it's future. I'm hoping that community will help and join. Surely copyright belongs to @adiwajshing and I hope the author changes his mind and someday comes back |
 |-----------------------------------------|
+
+# Baileys - Typescript/Javascript WhatsApp Web API
  
  Baileys does not require Selenium or any other browser to be interface with WhatsApp Web, it does so directly using a **WebSocket**. Not running Selenium or Chromimum saves you like **half a gig** of ram :/ 
 
