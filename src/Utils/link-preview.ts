@@ -47,7 +47,6 @@ export const getUrlInfo = async(
 		if(!text.startsWith('https://') && !text.startsWith('http://')) {
 			previewLink = 'https://' + previewLink
 		}
-
 		// SW-803 Added followRedirects that prevents exception
 		const info = await getLinkPreview(previewLink, {
 			...opts.fetchOpts, followRedirects: 'follow',
