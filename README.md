@@ -1,4 +1,6 @@
 # Baileys - Typescript/Javascript WhatsApp Web API
+
+* [![docker-swcore](https://github.com/Yard-Team/Baileys/workflows/Publish%20Release/badge.svg)](https://github.com/Yard-Team/Baileys/actions/workflows/publish-release.yml)
  
  Baileys does not require Selenium or any other browser to be interface with WhatsApp Web, it does so directly using a **WebSocket**. Not running Selenium or Chromimum saves you like **half a gig** of ram :/ 
 
