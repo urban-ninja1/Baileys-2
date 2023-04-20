@@ -175,6 +175,7 @@ export const decryptMessageNode = (
 					}
 				}
 			}
+
 			// SW ?
 			(fullMessage as any).fullJid = jidDecode(stanza.attrs.from);
 			// SW-809 Пришел ошибочный входящий вебхук из группового чата с маркером {{SWE003}}

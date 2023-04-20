@@ -731,12 +731,12 @@ export const processSyncAction = (
 		if(!isInitialSync) {
 			ev.emit('chats.delete', [id])
 		}
-	} else if (action?.agentAction && type === 'deviceAgent') {
-		if (action && action.agentAction) {
+	} else if(action?.agentAction && type === 'deviceAgent') {
+		if(action && action.agentAction) {
 			// SW-897 Показывать название сессии клиента при запросе метода getsettings
 			const { device } = jidDecode(me.id)!
-			if (device && device == action.agentAction.deviceID) {
-				ev.emit('creds.update', { me: { ...me, deviceName: action.agentAction.name! } });
+			if(device && device == action.agentAction.deviceID) {
+				ev.emit('creds.update', { me: { ...me, deviceName: action.agentAction.name! } })
 			}
 		}
 	} else {
