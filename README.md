@@ -8,15 +8,6 @@
 | :exclamation: As we all know famous @adiwajshing closed the original Baileys library since he received a cease & desist from WhatsApp. I fully respect his desicion but since library is under GPL-3 we have freedom to share and change the library to suit our needs. The fork is used in real project [BASIS API](https://basis-api.com) so i'm being involved and fully interested in it's future|
 |-----------------------------------------|
 
-
-## Another libraries
-
-There are other well-mantained libraries for other languages that you might interested in:
-
-* Java/Kotlin https://github.com/Auties00/Whatsapp4j
-* Go https://github.com/tulir/whatsmeow
-
-
 ## Intro
  
  Baileys does not require Selenium or any other browser to be interface with WhatsApp Web, it does so directly using a **WebSocket**. Not running Selenium or Chromimum saves you like **half a gig** of ram :/ 
