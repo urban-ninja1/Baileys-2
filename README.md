@@ -9,6 +9,6 @@
 |-----------------------------------------|
 
 
-| :memo:        | BASIS API goes open-source. Source codes currently are preparing for publishing. Follow us on github to know more!  |
+| :memo:        | [BASIS API](https://basis-api.com) goes open-source. Source codes currently are preparing for publishing. Follow us on github to know more!  |
 |---------------|:------------------------|
 
