@@ -7,3 +7,12 @@
 
 | :exclamation: As we all know famous @adiwajshing closed the original Baileys library since he received a cease & desist from WhatsApp. I fully respect his desicion but since library is under GPL-3 we have freedom to share and change the library to suit our needs. The fork is used in real project [BASIS API](https://basis-api.com) so i'm being involved and fully interested in it's future|
 |-----------------------------------------|
+
+
+## How to fetch changes from original Github repository
+
+```
+git remote add upstream https://github.com/WhiskeySockets/Baileys.git
+git pull upstream master 
+git push origin master
+```
