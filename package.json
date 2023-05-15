@@ -1,6 +1,6 @@
 {
   "name": "@yard-team/baileys",
-  "version": "6.0.1",
+  "version": "6.0.2",
   "description": "WhatsApp API",
   "homepage": "https://github.com/Yard-Team/Baileys",
   "main": "lib/index.js",
